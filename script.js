@@ -334,6 +334,7 @@
     }
   }
 
+<<<<<<< HEAD
   /* ---------------- About page film ---------------- */
   const aboutFilm = document.querySelector("#about-film");
   const aboutFilmButton = document.querySelector(".about-hero__play");
@@ -364,6 +365,8 @@
     });
   }
 
+=======
+>>>>>>> a0ead2ee7d4157b6dd052671ab745873b825dadc
   /* ---------------- Animated counters ---------------- */
   const counters = document.querySelectorAll("[data-count]");
   if (counters.length) {
@@ -515,4 +518,8 @@
 
   /* ---------------- Mark page ready (hero word reveal) ---------------- */
   requestAnimationFrame(() => document.body.classList.add("is-ready"));
+<<<<<<< HEAD
 })();
+=======
+})();
+>>>>>>> a0ead2ee7d4157b6dd052671ab745873b825dadc
