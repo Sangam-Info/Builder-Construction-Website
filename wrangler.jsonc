@@ -1,9 +1,0 @@
-{
-  // Cloudflare Workers config for deploying this static HTML site.
-  // No build step is required — the files are served directly as static assets.
-  "name": "builder-construction-website",
-  "compatibility_date": "2025-10-13",
-  "assets": {
-    "directory": "./public"
-  }
-}
