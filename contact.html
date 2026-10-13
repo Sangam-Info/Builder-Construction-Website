@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f2ec" />
+    <meta name="description" content="Get in touch with Sangam Builders & Developers to discuss your residential or commercial building project." />
+    <title>Contact — Sangam Builders & Developers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <header class="header">
+      <a class="brand" href="./index.html" aria-label="Sangam Builders & Developers home">
+        <img class="brand__logo" src="./img/Sangam_Builders_Luxury_Wall_Sign-removebg-preview.png" alt="Sangam Builders & Developers" />
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="nav" id="primary-nav" aria-label="Main navigation">
+        <a href="./about.html">About</a>
+        <a href="./projects.html">Projects</a>
+        <a href="./services.html">Services</a>
+        <a href="./contact.html" aria-current="page">Contact</a>
+      </nav>
+      <a class="header__cta pill-btn pill-btn--light" href="./contact.html" data-magnetic="0.25">
+        <span>Start a conversation</span>
+        <span class="pill-btn__ico" aria-hidden="true">↗</span>
+      </a>
+    </header>
+    <main id="main">
+      <section class="contact-page" aria-labelledby="page-title">
+        <div class="contact-page__intro">
+          <span class="eyebrow reveal"><span class="live-dot"></span> Your idea is a good place to start</span>
+          <h1 id="page-title" class="reveal" style="--delay:80ms">Let’s make<br />room for <em>what’s next.</em></h1>
+          <p class="reveal" style="--delay:160ms">Tell us a little about your plans. We’ll get the conversation started.</p>
+          <div class="contact-details reveal" style="--delay:220ms"><span>Prefer email?</span><a href="mailto:hello@sangambuilders.com">hello@sangambuilders.com ↗</a></div>
+        </div>
+        <form class="contact-form reveal" style="--delay:140ms" id="contact-form">
+          <label for="contact-name">Your name</label>
+          <input id="contact-name" name="name" type="text" autocomplete="name" placeholder="How should we address you?" required />
+          <label for="contact-email">Email address</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" placeholder="Where can we reach you?" required />
+          <label for="contact-project">A little about your project</label>
+          <textarea id="contact-project" name="message" rows="5" placeholder="What are you hoping to build?" required></textarea>
+          <button class="form-submit" type="submit"><span>Start a conversation</span><span class="arrow-icon" aria-hidden="true">↗</span></button>
+          <p class="form-note">Sending opens a new message in your email application.</p>
+        </form>
+      </section>
+    </main>
+    <footer class="site-footer"><a class="footer__brand" href="./index.html" aria-label="Sangam Builders & Developers home"><img class="footer__logo" src="./img/Sangam_Builders_Luxury_Wall_Sign-removebg-preview.png" alt="" /></a><span>Spaces with soul. Built to feel like yours.</span><a href="mailto:hello@sangambuilders.com">EMAIL US ↗</a><span class="footer__copyright">© <span id="current-year">2026</span> SANGAM BUILDERS &amp; DEVELOPERS</span></footer>
+  </body>
+</html>
