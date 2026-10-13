@@ -505,9 +505,10 @@
         contactForm.reportValidity();
         return;
       }
-      const subject = encodeURIComponent(`Project enquiry from ${name}`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-      window.location.href = `mailto:hello@sangambuilders.com?subject=${subject}&body=${body}`;
+      const text = encodeURIComponent(
+        `Hi Sangam Builders, I'd like to discuss a project.\n\nName: ${name}\nEmail: ${email}\n\n${message}`
+      );
+      window.open(`https://wa.me/919876543210?text=${text}`, "_blank", "noopener");
     });
   }
 
