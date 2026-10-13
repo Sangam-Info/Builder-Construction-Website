@@ -3059,6 +3059,8 @@ body.has-cursor button {
 .project__nav {
   display: flex;
   gap: 10px;
+  /* Decorative only (aria-hidden): no carousel wired up, so don't invite clicks. */
+  pointer-events: none;
 }
 
 .project__nav-btn {

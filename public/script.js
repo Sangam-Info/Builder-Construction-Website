@@ -511,6 +511,21 @@
     });
   }
 
+  /* ---------------- Hero "Watch video" → play the story film ---------------- */
+  const watchLink = document.querySelector(".watch-link");
+  const storyVideo = document.querySelector(".story__video");
+  if (watchLink instanceof HTMLAnchorElement && storyVideo instanceof HTMLVideoElement) {
+    watchLink.addEventListener("click", (event) => {
+      event.preventDefault();
+      const story = document.querySelector("#story");
+      (story || storyVideo).scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "center",
+      });
+      storyVideo.play().catch(() => {});
+    });
+  }
+
   initScene();
 
   /* ---------------- Mark page ready (hero word reveal) ---------------- */
