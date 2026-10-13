@@ -103,28 +103,42 @@
           </ul>
         </div>
 
-        <div class="hero-stage hero-stage--static" aria-label="Modern courtyard residence at dusk">
-          <div class="stage-visual" aria-hidden="true"></div>
+        <div class="hero-stage hero-stage--static" id="hero-stage" aria-roledescription="carousel" aria-label="Featured spaces by Sangam">
+          <div class="stage-slides" aria-live="polite">
+            <div class="stage-slide is-active" role="group" aria-roledescription="slide" aria-label="Modern Living"
+              data-title="Modern Living" data-sub="Thoughtful design for a brighter tomorrow."
+              style="background-image:url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')"></div>
+            <div class="stage-slide" role="group" aria-roledescription="slide" aria-label="Courtyard Villa"
+              data-title="Courtyard Villa" data-sub="Open, light-filled spaces for family life."
+              style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')"></div>
+            <div class="stage-slide" role="group" aria-roledescription="slide" aria-label="Garden Residence"
+              data-title="Garden Residence" data-sub="Where architecture meets greenery."
+              style="background-image:url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')"></div>
+            <div class="stage-slide" role="group" aria-roledescription="slide" aria-label="Urban Retreat"
+              data-title="Urban Retreat" data-sub="Calm, considered interiors in the city."
+              style="background-image:url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&amp;fit=crop&amp;w=1600&amp;q=80')"></div>
+          </div>
+          <div class="stage-shade" aria-hidden="true"></div>
 
-          <div class="stage-overlay" aria-hidden="true">
+          <div class="stage-overlay">
             <div class="stage-badge">
-              <span class="stage-badge__btn">‹</span>
-              <span class="stage-badge__count">01 / 04</span>
-              <span class="stage-badge__btn">›</span>
+              <button type="button" class="stage-badge__btn" data-dir="prev" aria-label="Previous slide">‹</button>
+              <span class="stage-badge__count" id="stage-count">01 / 04</span>
+              <button type="button" class="stage-badge__btn" data-dir="next" aria-label="Next slide">›</button>
             </div>
 
             <div class="stage-card">
-              <span class="stage-card__thumb"></span>
+              <span class="stage-card__thumb" id="stage-thumb"></span>
               <span class="stage-card__text">
-                <strong>Modern Living</strong>
-                Thoughtful design for a brighter tomorrow.
+                <strong id="stage-title">Modern Living</strong>
+                <span id="stage-sub">Thoughtful design for a brighter tomorrow.</span>
               </span>
-              <span class="stage-card__arrow">→</span>
+              <button type="button" class="stage-card__arrow" data-dir="next" aria-label="Next slide">→</button>
             </div>
 
             <div class="stage-nav">
-              <span class="stage-nav__btn">‹</span>
-              <span class="stage-nav__btn">›</span>
+              <button type="button" class="stage-nav__btn" data-dir="prev" aria-label="Previous slide">‹</button>
+              <button type="button" class="stage-nav__btn" data-dir="next" aria-label="Next slide">›</button>
             </div>
           </div>
         </div>
@@ -185,51 +199,81 @@
       </section>
 
       <!-- ============== CATEGORY TABS ============== -->
-      <div class="cats" aria-label="What we do">
-        <span class="cat cat--active">
+      <div class="cats" role="tablist" aria-label="What we do">
+        <button type="button" class="cat cat--active" role="tab" aria-selected="true" aria-controls="projects"
+          data-cat="interiors"
+          data-img="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&amp;fit=crop&amp;w=1500&amp;q=85"
+          data-title="Spaces that inspire everyday living"
+          data-desc="From contemporary homes to modern commercial spaces, our interiors reflect thoughtful design, superior quality and attention to every detail."
+          data-alt="Sunlit contemporary interior with open kitchen and living space">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M3 11h18a1 1 0 0 1 1 1v4H2v-4a1 1 0 0 1 1-1z"/><path d="M5 16v2M19 16v2"/></svg>
           Interiors
-        </span>
-        <span class="cat">
+        </button>
+        <button type="button" class="cat" role="tab" aria-selected="false" aria-controls="projects"
+          data-cat="architecture"
+          data-img="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&amp;fit=crop&amp;w=1500&amp;q=85"
+          data-title="Architecture with a sense of place"
+          data-desc="Considered forms, honest materials and light-filled volumes, designed around how people really live and work."
+          data-alt="Modern architectural facade with clean lines">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></svg>
           Architecture
-        </span>
-        <span class="cat">
+        </button>
+        <button type="button" class="cat" role="tab" aria-selected="false" aria-controls="projects"
+          data-cat="residential"
+          data-img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1500&amp;q=85"
+          data-title="Homes made to feel like yours"
+          data-desc="Warm, functional family homes, planned around comfort, natural light and everyday ease of living."
+          data-alt="Modern residential house exterior at dusk">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/></svg>
           Residential
-        </span>
-        <span class="cat">
+        </button>
+        <button type="button" class="cat" role="tab" aria-selected="false" aria-controls="projects"
+          data-cat="commercial"
+          data-img="./img/alpha-one-day.jpg"
+          data-title="Commercial spaces that perform"
+          data-desc="High-visibility retail and office developments like Alpha One Business Centre, built for footfall, flexibility and lasting value."
+          data-alt="Alpha One Business Centre commercial development">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M8 8h2M14 8h2M8 12h2M14 12h2M8 16h2M14 16h2"/></svg>
           Commercial
-        </span>
-        <span class="cat">
+        </button>
+        <button type="button" class="cat" role="tab" aria-selected="false" aria-controls="projects"
+          data-cat="construction"
+          data-img="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&amp;fit=crop&amp;w=1500&amp;q=85"
+          data-title="Built with precision and care"
+          data-desc="Earthquake-resistant RCC structures and quality execution, delivered on time with clear communication at every stage."
+          data-alt="Building under construction with structural frame">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21h16"/><path d="M6 21V7l9-3v3"/><path d="M6 7l12 2"/><path d="M15 7v14"/></svg>
           Construction
-        </span>
-        <span class="cat">
+        </button>
+        <button type="button" class="cat" role="tab" aria-selected="false" aria-controls="projects"
+          data-cat="renovation"
+          data-img="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&amp;fit=crop&amp;w=1500&amp;q=85"
+          data-title="Renewed for the way you live now"
+          data-desc="Thoughtful remodels that refresh tired spaces, improve flow and bring new life to existing buildings."
+          data-alt="Freshly renovated contemporary interior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg>
           Renovation
-        </span>
+        </button>
       </div>
 
       <!-- ============== PROJECTS : parallax dark showcase ============== -->
       <section class="project" id="projects" aria-labelledby="project-heading">
         <div class="project__media">
-          <div class="project__image" data-parallax="0.1" role="img" aria-label="Sunlit contemporary interior with open kitchen and living space"></div>
+          <div class="project__image" id="project-image" data-parallax="0.1" role="img" aria-label="Sunlit contemporary interior with open kitchen and living space"></div>
         </div>
         <div class="project__body">
           <div class="project__top">
             <div class="section-index section-index--light reveal"><span>02</span> / OUR PROJECTS</div>
-            <div class="project__nav" aria-hidden="true">
-              <span class="project__nav-btn">‹</span>
-              <span class="project__nav-btn">›</span>
+            <div class="project__nav">
+              <button type="button" class="project__nav-btn" id="project-prev" aria-label="Previous category">‹</button>
+              <button type="button" class="project__nav-btn" id="project-next" aria-label="Next category">›</button>
             </div>
           </div>
           <div class="project__copy reveal" style="--delay:100ms">
-            <h2 id="project-heading">Spaces<br />that inspire<br />everyday living<span class="period">.</span></h2>
-            <p class="project__description">From contemporary homes to modern commercial spaces, our projects reflect thoughtful design, superior quality and attention to every detail.</p>
+            <h2 id="project-heading">Spaces that inspire everyday living<span class="period">.</span></h2>
+            <p class="project__description" id="project-description">From contemporary homes to modern commercial spaces, our interiors reflect thoughtful design, superior quality and attention to every detail.</p>
           </div>
-          <div class="project__foot"><span>MADE FOR THE MOMENTS THAT MATTER</span><span>02 — 03</span></div>
+          <div class="project__foot"><span>MADE FOR THE MOMENTS THAT MATTER</span><span id="project-counter">01 — 06</span></div>
         </div>
       </section>
 
@@ -336,7 +380,7 @@
           <h2>Contact us</h2>
           <a href="tel:+919876543210"><span class="site-footer__contact-icon" aria-hidden="true">☎</span><span>+91 98765 43210</span></a>
           <a href="mailto:hello@sangambuilders.com"><span class="site-footer__contact-icon" aria-hidden="true">✉</span><span>hello@sangambuilders.com</span></a>
-          <a href="https://maps.google.com/?q=Ahmedabad%2C+Gujarat%2C+India" target="_blank" rel="noopener noreferrer"><span class="site-footer__contact-icon" aria-hidden="true">⌖</span><span>Ahmedabad, Gujarat, India</span></a>
+          <a href="https://maps.google.com/?q=Zanzarda+Road%2C+Near+Bypass+Chokdi%2C+Junagadh" target="_blank" rel="noopener noreferrer"><span class="site-footer__contact-icon" aria-hidden="true">⌖</span><span>Junagadh, Gujarat, India</span></a>
           <span class="site-footer__hours"><span class="site-footer__contact-icon" aria-hidden="true">◷</span><span>Mon – Sat, 10:30 AM – 6:30 PM</span></span>
         </div>
       </div>

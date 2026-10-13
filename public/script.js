@@ -526,6 +526,143 @@
     });
   }
 
+  /* ---------------- Projects category switcher ---------------- */
+  const catButtons = Array.from(document.querySelectorAll(".cats .cat"));
+  const projectImage = document.getElementById("project-image");
+  const projectHeading = document.getElementById("project-heading");
+  const projectDescription = document.getElementById("project-description");
+  const projectCounter = document.getElementById("project-counter");
+
+  if (catButtons.length && projectImage && projectHeading && projectDescription) {
+    const imageGradient =
+      "linear-gradient(180deg, rgb(20 28 24 / 0%) 55%, rgb(20 28 24 / 30%) 100%)";
+    const pad = (n) => String(n).padStart(2, "0");
+    let activeIndex = catButtons.findIndex((b) => b.classList.contains("cat--active"));
+    if (activeIndex < 0) activeIndex = 0;
+
+    const applyImage = (url, alt) => {
+      const swap = () => {
+        projectImage.style.backgroundImage = `${imageGradient}, url("${url}")`;
+        if (alt) projectImage.setAttribute("aria-label", alt);
+        projectImage.classList.remove("is-swapping");
+      };
+      projectImage.classList.add("is-swapping");
+      const pre = new Image();
+      pre.onload = swap;
+      pre.onerror = swap;
+      pre.src = url;
+      // Fallback in case the load events never fire.
+      window.setTimeout(swap, 600);
+    };
+
+    const setCategory = (index) => {
+      const count = catButtons.length;
+      const next = ((index % count) + count) % count;
+      const btn = catButtons[next];
+      activeIndex = next;
+
+      catButtons.forEach((b, i) => {
+        const on = i === next;
+        b.classList.toggle("cat--active", on);
+        b.setAttribute("aria-selected", String(on));
+      });
+
+      applyImage(btn.dataset.img, btn.dataset.alt);
+
+      const title = btn.dataset.title || "";
+      projectHeading.textContent = title;
+      const period = document.createElement("span");
+      period.className = "period";
+      period.textContent = ".";
+      projectHeading.appendChild(period);
+
+      projectDescription.textContent = btn.dataset.desc || "";
+      if (projectCounter) projectCounter.textContent = `${pad(next + 1)} — ${pad(count)}`;
+    };
+
+    catButtons.forEach((btn, i) => {
+      btn.addEventListener("click", () => setCategory(i));
+    });
+
+    const prevBtn = document.getElementById("project-prev");
+    const nextBtn = document.getElementById("project-next");
+    if (prevBtn) prevBtn.addEventListener("click", () => setCategory(activeIndex - 1));
+    if (nextBtn) nextBtn.addEventListener("click", () => setCategory(activeIndex + 1));
+
+    // Keyboard arrows when a tab is focused.
+    const cats = document.querySelector(".cats");
+    if (cats) {
+      cats.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          e.preventDefault();
+          const dir = e.key === "ArrowRight" ? 1 : -1;
+          setCategory(activeIndex + dir);
+          catButtons[activeIndex].focus();
+        }
+      });
+    }
+  }
+
+  /* ---------------- Hero image carousel ---------------- */
+  const heroStage = document.getElementById("hero-stage");
+  const stageSlides = heroStage ? Array.from(heroStage.querySelectorAll(".stage-slide")) : [];
+  if (heroStage && stageSlides.length > 1) {
+    const countEl = document.getElementById("stage-count");
+    const titleEl = document.getElementById("stage-title");
+    const subEl = document.getElementById("stage-sub");
+    const thumbEl = document.getElementById("stage-thumb");
+    const total = stageSlides.length;
+    const pad = (n) => String(n).padStart(2, "0");
+    let index = Math.max(0, stageSlides.findIndex((s) => s.classList.contains("is-active")));
+    if (index < 0) index = 0;
+    const urlOf = (slide) => {
+      const m = /url\(["']?(.*?)["']?\)/.exec(slide.style.backgroundImage || "");
+      return m ? m[1] : "";
+    };
+
+    const go = (to) => {
+      index = ((to % total) + total) % total;
+      stageSlides.forEach((s, i) => s.classList.toggle("is-active", i === index));
+      const slide = stageSlides[index];
+      if (countEl) countEl.textContent = `${pad(index + 1)} / ${pad(total)}`;
+      if (titleEl) titleEl.textContent = slide.dataset.title || "";
+      if (subEl) subEl.textContent = slide.dataset.sub || "";
+      if (thumbEl) {
+        const u = urlOf(slide);
+        if (u) thumbEl.style.backgroundImage = `url("${u}")`;
+      }
+    };
+
+    // Autoplay (paused on hover / focus / tab hidden / reduced motion).
+    let timer = null;
+    const DELAY = 5000;
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+    const start = () => {
+      stop();
+      if (reduceMotion) return;
+      timer = setInterval(() => go(index + 1), DELAY);
+    };
+
+    heroStage.querySelectorAll("[data-dir]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        go(index + (btn.dataset.dir === "prev" ? -1 : 1));
+        start();
+      });
+    });
+
+    heroStage.addEventListener("mouseenter", stop);
+    heroStage.addEventListener("mouseleave", start);
+    heroStage.addEventListener("focusin", stop);
+    heroStage.addEventListener("focusout", start);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else start();
+    });
+
+    go(index);
+    start();
+  }
+
   initScene();
 
   /* ---------------- Mark page ready (hero word reveal) ---------------- */
